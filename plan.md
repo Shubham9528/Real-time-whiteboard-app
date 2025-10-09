@@ -162,9 +162,9 @@ real-time-whiteboard-app/
 ### Phase 1: Project Setup (Days 2-3)
 1. **Initialize project structure**
    - [ ] Create monorepo with client/server folders
-   - [ ] Set up Vite + React + TypeScript for frontend
-   - [ ] Set up Node.js + Express + TypeScript for backend
-   - [ ] Configure Tailwind CSS and basic styling
+   - [x] Set up Vite + React + TypeScript for frontend
+   - [x] Set up Node.js + Express + TypeScript for backend
+   - [x] Configure Tailwind CSS and basic styling
 
 2. **Install dependencies**
    - [ ] Frontend: React, TypeScript, Vite, Tailwind, Socket.io-client, Zustand, Lucide React
