@@ -3,6 +3,8 @@ import { Landing } from './pages/Landing';
 import { FeaturesPage } from './pages/FeaturesPage';
 import { AboutPage } from './pages/AboutPage';
 import { PricingPage } from './pages/PricingPage';
+import { Login } from './pages/Login';
+import { Signup } from './pages/Signup';
 import { LandingLayout } from './components/Layout/LandingLayout';
 import './App.css';
 
@@ -11,6 +13,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/features" element={
           <LandingLayout>
             <FeaturesPage />
