@@ -1,9 +1,11 @@
 import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export const Dashboard = () => {
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
+  const [isCreatingRoom, setIsCreatingRoom] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -14,9 +16,40 @@ export const Dashboard = () => {
     }
   };
 
-  const handleCreateRoom = () => {
-    const roomId = Math.random().toString(36).substring(2, 15);
-    navigate(`/board?room=${roomId}`);
+  const handleCreateRoom = async () => {
+    setIsCreatingRoom(true);
+    try {
+      const roomName = prompt('Enter room name:', 'My Whiteboard Room');
+      if (!roomName) {
+        setIsCreatingRoom(false);
+        return;
+      }
+
+      const response = await fetch('http://localhost:3001/api/rooms', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          roomName,
+          maxUsers: 10,
+          isPublic: true,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create room');
+      }
+
+      const { roomId } = await response.json();
+      console.log('Navigating to board with roomId:', roomId);
+      navigate(`/board?room=${roomId}`);
+    } catch (error) {
+      console.error('Error creating room:', error);
+      alert('Failed to create room. Please try again.');
+    } finally {
+      setIsCreatingRoom(false);
+    }
   };
 
   const handleJoinRoom = () => {
@@ -61,9 +94,10 @@ export const Dashboard = () => {
               <div className="space-x-4">
                 <button
                   onClick={handleCreateRoom}
-                  className="bg-blue-500 text-white px-6 py-3 rounded-md text-lg hover:bg-blue-600"
+                  disabled={isCreatingRoom}
+                  className="bg-blue-500 text-white px-6 py-3 rounded-md text-lg hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed"
                 >
-                  Create New Room
+                  {isCreatingRoom ? 'Creating...' : 'Create New Room'}
                 </button>
                 <button
                   onClick={handleJoinRoom}

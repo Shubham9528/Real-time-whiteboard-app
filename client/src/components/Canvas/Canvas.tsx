@@ -1,31 +1,37 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, forwardRef } from 'react';
 import { useCanvasStore } from '../../store/canvasStore';
 
 interface CanvasProps {
   width?: number;
   height?: number;
   className?: string;
+  onDraw?: (data: any) => void;
 }
 
-export const Canvas: React.FC<CanvasProps> = ({
+export const Canvas = forwardRef<HTMLCanvasElement, CanvasProps>(({
   width = 1200,
   height = 800,
   className = '',
-}) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  onDraw,
+}, ref) => {
+  const internalRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = (ref as React.RefObject<HTMLCanvasElement>) || internalRef;
   const { 
     isDrawing,
     startDrawing,
     continueDrawing,
     stopDrawing,
-    setCanvasRef 
+    setCanvasRef,
+    currentColor,
+    lineWidth,
+    currentPath
   } = useCanvasStore();
 
   useEffect(() => {
     if (canvasRef.current) {
       setCanvasRef(canvasRef.current);
     }
-  }, [setCanvasRef]);
+  }, [setCanvasRef, canvasRef]);
 
   const getMousePos = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
@@ -51,6 +57,16 @@ export const Canvas: React.FC<CanvasProps> = ({
   };
 
   const handleMouseUp = () => {
+    if (currentPath.length > 0) {
+      const drawingData = {
+        points: currentPath,
+        color: currentColor,
+        lineWidth: lineWidth,
+      };
+      if (onDraw) {
+        onDraw(drawingData);
+      }
+    }
     stopDrawing();
   };
 
@@ -73,4 +89,6 @@ export const Canvas: React.FC<CanvasProps> = ({
       />
     </div>
   );
-};
+});
+
+Canvas.displayName = 'Canvas';

@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { SocketProvider } from './contexts/SocketContext';
 import { Landing } from './pages/Landing';
 import { FeaturesPage } from './pages/FeaturesPage';
 import { AboutPage } from './pages/AboutPage';
@@ -13,38 +14,40 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/features" element={
-          <LandingLayout>
-            <FeaturesPage />
-          </LandingLayout>
-        } />
-        <Route path="/about" element={
-          <LandingLayout>
-            <AboutPage />
-          </LandingLayout>
-        } />
-        <Route path="/pricing" element={
-          <LandingLayout>
-            <PricingPage />
-          </LandingLayout>
-        } />
-        <Route path="/dashboard" element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        } />
-        <Route path="/board" element={
-          <ProtectedRoute>
-            <Board />
-          </ProtectedRoute>
-        } />
-      </Routes>
-    </Router>
+    <SocketProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/features" element={
+            <LandingLayout>
+              <FeaturesPage />
+            </LandingLayout>
+          } />
+          <Route path="/about" element={
+            <LandingLayout>
+              <AboutPage />
+            </LandingLayout>
+          } />
+          <Route path="/pricing" element={
+            <LandingLayout>
+              <PricingPage />
+            </LandingLayout>
+          } />
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/board" element={
+            <ProtectedRoute>
+              <Board />
+            </ProtectedRoute>
+          } />
+        </Routes>
+      </Router>
+    </SocketProvider>
   );
 }
 
