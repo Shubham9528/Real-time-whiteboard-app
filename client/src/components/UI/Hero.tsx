@@ -1,7 +1,18 @@
 import { Button } from "./button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../store/authStore";
 
 export const Hero = () => {
+  const navigate = useNavigate();
+  const { user } = useAuthStore();
+  
+  const handleNavigation = (path: string) => {
+    if (!user) {
+      navigate('/login', { state: { from: path } });
+    } else {
+      navigate(path);
+    }
+  };
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
@@ -15,11 +26,20 @@ export const Hero = () => {
               Draw, sketch, and brainstorm together with our interactive whiteboard. Perfect for teams, classrooms, and creative minds.
             </p>
             <div className="flex gap-4 justify-center lg:justify-start">
-              <Button asChild size="lg">
-                <Link to="/create">Create Board</Link>
+              <Button 
+                onClick={() => handleNavigation('/create')} 
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                Create Board
               </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link to="/join">Join Board</Link>
+              <Button 
+                onClick={() => handleNavigation('/join')}
+                variant="outline" 
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                Join Board
               </Button>
             </div>
           </div>

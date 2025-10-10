@@ -6,7 +6,9 @@ import { PricingPage } from './pages/PricingPage';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { Board } from './pages/Board';
+import { Dashboard } from './pages/Dashboard';
 import { LandingLayout } from './components/Layout/LandingLayout';
+import { ProtectedRoute } from './components/Auth/ProtectedRoute';
 import './App.css';
 
 function App() {
@@ -31,7 +33,16 @@ function App() {
             <PricingPage />
           </LandingLayout>
         } />
-        <Route path="/board" element={<Board />} />
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/board" element={
+          <ProtectedRoute>
+            <Board />
+          </ProtectedRoute>
+        } />
       </Routes>
     </Router>
   );
