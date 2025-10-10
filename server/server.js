@@ -1,11 +1,18 @@
-const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
-const cors = require('cors');
+import 'dotenv/config';
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
+import cors from 'cors';
+import connectDB from './src/config/database.js';
 
 const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 3001;
+
+// Connect to MongoDB
+connectDB();
+
+// Socket.io setup
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:5173", // Update this with your client URL
@@ -37,7 +44,8 @@ io.on('connection', (socket) => {
   });
 });
 
-
 server.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`);
 });
+
+export { app, server, io };
