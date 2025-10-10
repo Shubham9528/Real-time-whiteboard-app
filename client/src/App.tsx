@@ -5,6 +5,7 @@ import { AboutPage } from './pages/AboutPage';
 import { PricingPage } from './pages/PricingPage';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
+import { Board } from './pages/Board';
 import { LandingLayout } from './components/Layout/LandingLayout';
 import './App.css';
 
@@ -30,6 +31,7 @@ function App() {
             <PricingPage />
           </LandingLayout>
         } />
+        <Route path="/board" element={<Board />} />
       </Routes>
     </Router>
   );
