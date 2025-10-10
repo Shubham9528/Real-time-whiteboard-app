@@ -16,10 +16,9 @@ A collaborative real-time whiteboard application that allows multiple users to d
 ## 🛠 Technology Stack
 - **Frontend**: React + TypeScript + Vite
 - **Canvas**: HTML5 Canvas API or Fabric.js
-- **Real-time**: Socket.io
-- **Backend**: Node.js + Express
-- **Authentication**: JWT + bcrypt
-- **Database**: MongoDB or PostgreSQL
+- **Real-time**: Firebase Realtime Database
+- **Authentication**: Firebase Authentication
+- **Backend as a Service**: Firebase
 - **Styling**: Tailwind CSS
 - **State Management**: Zustand
 - **Icons**: Lucide React
@@ -40,14 +39,13 @@ real-time-whiteboard-app/
 │   │   │   │   ├── Toolbar.tsx
 │   │   │   │   ├── ToolButton.tsx
 │   │   │   │   └── ColorPicker.tsx
-│   │   │   ├── UI/
-│   │   │   │   ├── Header.tsx
-│   │   │   │   ├── Hero.tsx
-│   │   │   │   ├── Features.tsx
-│   │   │   │   ├── UserList.tsx
-│   │   │   │   ├── RoomInfo.tsx
-│   │   │   │   ├── Modal.tsx
-│   │   │   │   └── AuthForm.tsx
+│   │   │   ├── Auth/
+│   │   │   │   ├── LoginForm.tsx
+│   │   │   │   ├── SignupForm.tsx
+│   │   │   │   ├── ProtectedRoute.tsx
+│   │   │   │   └── GuestAccess.tsx
+│   │   ├── config/
+│   │   │   └── firebase.ts    # Firebase configuration
 │   │   │   ├── Auth/
 │   │   │   │   ├── LoginForm.tsx
 │   │   │   │   ├── SignupForm.tsx
@@ -167,8 +165,7 @@ real-time-whiteboard-app/
    - [x] Configure Tailwind CSS and basic styling
 
 2. **Install dependencies**
-   - [ ] Frontend: React, TypeScript, Vite, Tailwind, Socket.io-client, Zustand, Lucide React
-   - [ ] Backend: Express, Socket.io, TypeScript, CORS, dotenv, JWT, bcrypt, MongoDB/PostgreSQL
+   - [x] Frontend: React, TypeScript, Vite, Tailwind, Firebase, Zustand, Lucide React
 
 3. **Basic routing and layout**
    - [ ] Set up React Router
@@ -176,11 +173,10 @@ real-time-whiteboard-app/
    - [ ] Add navigation between pages
 
 4. **Authentication setup**
-   - [ ] Set up database connection (MongoDB/PostgreSQL)
-   - [ ] Create User model and authentication middleware
-   - [ ] Implement JWT token generation and validation
-   - [ ] Create auth routes (signup, login, logout)
-   - [ ] Set up protected routes on frontend
+   - [x] Set up Firebase Authentication
+   - [x] Configure Firebase project and enable authentication methods
+   - [x] Create auth context/provider
+   - [x] Set up protected routes
 
 ### Phase 2: Authentication UI (Day 4)
 1. **Authentication pages and components**
