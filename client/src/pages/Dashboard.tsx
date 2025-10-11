@@ -25,7 +25,7 @@ export const Dashboard = () => {
         return;
       }
 
-      const response = await fetch('http://localhost:3001/api/rooms', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/rooms`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

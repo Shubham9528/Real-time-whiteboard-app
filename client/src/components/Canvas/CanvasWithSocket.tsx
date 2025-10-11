@@ -97,6 +97,7 @@ export const CanvasWithSocket: React.FC<CanvasWithSocketProps> = ({
     setIsDrawing(true);
     setCurrentPath([{ x, y }]);
     setStartPoint({ x, y });
+    console.log('Start point:', startPoint);
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
