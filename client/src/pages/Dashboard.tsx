@@ -24,8 +24,8 @@ export const Dashboard = () => {
         setIsCreatingRoom(false);
         return;
       }
-
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/rooms`, {
+      const baseUrl = import.meta.env.VITE_BACKEND_API_URL;
+      const response = await fetch(`${baseUrl}/api/rooms`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
