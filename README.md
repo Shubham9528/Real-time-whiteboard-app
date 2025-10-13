@@ -31,12 +31,21 @@ A web-based collaborative whiteboard application that allows multiple users to d
 - Download whiteboard as PNG image
 - Responsive design for different screen sizes
 
+
+
+
+
+
 ## User Journey
 
 ### 1. Getting Started
 - User visits the application landing page
 - User chooses to either log in or sign up for a new account
 - New users can register using email/password or Google OAuth
+
+<img width="1892" height="938" alt="image" src="https://github.com/user-attachments/assets/7dcd3e7b-002e-42f1-8c13-c8238971cd7f" />
+
+<img width="476" height="569" alt="image" src="https://github.com/user-attachments/assets/94e25e03-4fae-4c0a-9e0d-1ae0745c9a2a" />
 
 ### 2. Dashboard Access
 - After authentication, user is directed to the dashboard
