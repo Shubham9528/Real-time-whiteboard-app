@@ -73,6 +73,7 @@ A web-based collaborative whiteboard application that allows multiple users to d
 - **Firebase** for authentication
 - **Zustand** for state management
 
+
 ### Backend
 - **Node.js** with Express
 - **Socket.IO** for WebSocket communication
