@@ -51,6 +51,8 @@ A web-based collaborative whiteboard application that allows multiple users to d
 - After authentication, user is directed to the dashboard
 - User can see options to create a new whiteboard room or join an existing one
 
+<img width="1601" height="504" alt="image" src="https://github.com/user-attachments/assets/46af6705-ad05-4113-8628-4fc70610267b" />
+
 ### 3. Room Creation
 - User clicks "Create New Room" and enters a room name
 - System generates a unique room ID and redirects user to the whiteboard
@@ -61,6 +63,9 @@ A web-based collaborative whiteboard application that allows multiple users to d
 - User customizes drawing properties (color, line width)
 - As user draws, actions are instantly broadcast to all room participants
 - Users can see each other's cursors and drawing in real-time
+
+<img width="3799" height="887" alt="image" src="https://github.com/user-attachments/assets/cf3cc65d-cdb0-4aa0-a32a-4d961b0a4199" />
+
 
 ### 5. Room Management
 - User can see list of active participants in the room
