@@ -31,6 +31,38 @@ A web-based collaborative whiteboard application that allows multiple users to d
 - Download whiteboard as PNG image
 - Responsive design for different screen sizes
 
+## User Journey
+
+### 1. Getting Started
+- User visits the application landing page
+- User chooses to either log in or sign up for a new account
+- New users can register using email/password or Google OAuth
+
+### 2. Dashboard Access
+- After authentication, user is directed to the dashboard
+- User can see options to create a new whiteboard room or join an existing one
+
+### 3. Room Creation
+- User clicks "Create New Room" and enters a room name
+- System generates a unique room ID and redirects user to the whiteboard
+- User can share the room ID with collaborators
+
+### 4. Collaborative Drawing
+- User accesses drawing tools (pen, shapes, eraser)
+- User customizes drawing properties (color, line width)
+- As user draws, actions are instantly broadcast to all room participants
+- Users can see each other's cursors and drawing in real-time
+
+### 5. Room Management
+- User can see list of active participants in the room
+- User can leave the room and return to the dashboard
+- Room is automatically cleaned up when all users leave
+
+### 6. Canvas Management
+- User can clear the entire canvas if needed
+- User can download the whiteboard as a PNG image
+- All users in the room see the same canvas state
+
 ## Tech Stack
 
 ### Frontend
