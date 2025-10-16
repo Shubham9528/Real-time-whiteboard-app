@@ -1,18 +1,8 @@
 import { Button } from "./button";
 import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "../../store/authStore";
 
 export const Hero = () => {
   const navigate = useNavigate();
-  const { user } = useAuthStore();
-  
-  const handleNavigation = (path: string) => {
-    if (!user) {
-      navigate('/login', { state: { from: path } });
-    } else {
-      navigate(path);
-    }
-  };
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
@@ -27,14 +17,14 @@ export const Hero = () => {
             </p>
             <div className="flex gap-4 justify-center lg:justify-start">
               <Button 
-                onClick={() => handleNavigation('/create')} 
+                onClick={() => navigate('/login')} 
                 size="lg"
                 className="w-full sm:w-auto"
               >
                 Create Board
               </Button>
               <Button 
-                onClick={() => handleNavigation('/join')}
+                onClick={() => navigate('/login')}
                 variant="outline" 
                 size="lg"
                 className="w-full sm:w-auto"
