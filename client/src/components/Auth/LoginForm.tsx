@@ -4,7 +4,7 @@ import { useAuthStore } from '../../store/authStore';
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('test@gmail.com');
-  const [password, setPassword] = useState('test123');
+  const [password, setPassword] = useState('test@123');
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
